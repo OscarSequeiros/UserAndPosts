@@ -7,6 +7,7 @@ import co.com.ceiba.mobile.pruebadeingreso.domain.User
 import co.com.ceiba.mobile.pruebadeingreso.domain.UserWithPosts
 import co.com.ceiba.mobile.pruebadeingreso.domain.repository.UserRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 class UserDataRepository(
         private val localSource: UserDao,
@@ -15,7 +16,18 @@ class UserDataRepository(
 ) : UserRepository {
 
     override fun getAllUsers(): Flow<List<User>> {
-        TODO("Not yet implemented")
+        return flow {
+
+            val localUsers = localSource.getAll().ifEmpty {
+                val remoteUsers = remoteSource.getAll()
+                val newUsers = mapper.toRoom(remoteUsers)
+                localSource.insert(newUsers)
+                localSource.getAll()
+            }
+
+            val users = mapper.toDomain(localUsers)
+            emit(users)
+        }
     }
 
     override fun getUserWithPosts(userId: Long): Flow<UserWithPosts> {

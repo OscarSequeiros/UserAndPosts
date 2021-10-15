@@ -6,21 +6,29 @@ import co.com.ceiba.mobile.pruebadeingreso.domain.User
 
 class UserDataMapper {
 
-    fun toRoom(user: RemoteUser): RoomUser {
+    fun toRoom(users: List<RemoteUser>): List<RoomUser> {
+        return users.map { user -> user.toRoom() }
+    }
+
+    private fun RemoteUser.toRoom(): RoomUser {
         return RoomUser(
-                id = user.id,
-                name = user.name,
-                email = user.email,
-                phoneNumber = user.phone
+                id = id,
+                name = name,
+                email = email,
+                phoneNumber = phone
         )
     }
 
-    fun toDomain(user: RoomUser): User {
+    fun toDomain(users: List<RoomUser>): List<User> {
+        return users.map { user -> user.toDomain() }
+    }
+
+    private fun RoomUser.toDomain(): User {
         return User(
-                id = user.id,
-                name = user.name,
-                email = user.email,
-                phoneNumber = user.phoneNumber
+                id = id,
+                name = name,
+                email = email,
+                phoneNumber = phoneNumber
         )
     }
 }
