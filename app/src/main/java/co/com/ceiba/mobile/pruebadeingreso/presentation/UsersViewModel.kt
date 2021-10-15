@@ -14,16 +14,11 @@ class UsersViewModel @Inject constructor(
         private val getUsersUseCase: GetAllUsersUseCase
 ) : ViewModel() {
 
-    private val _stateFlow = MutableStateFlow<UsersUiState>(IdleState)
-
-    val stateFlow: StateFlow<UsersUiState>
-        get() = _stateFlow
-
-    fun getUsers() {
-        getUsersUseCase()
-                .onEach { users -> _stateFlow.value = SuccessState(users) }
-                .onStart { _stateFlow.value = LoadingState }
-                .catch { error -> _stateFlow.value = ErrorState(error) }
+    fun getUsers(): Flow<UsersUiState> {
+        return getUsersUseCase()
+                .map { users -> SuccessState(users) as UsersUiState }
+                .onStart { emit(LoadingState) }
+                .catch { error -> emit(ErrorState(error)) }
                 .flowOn(Dispatchers.IO)
     }
 }

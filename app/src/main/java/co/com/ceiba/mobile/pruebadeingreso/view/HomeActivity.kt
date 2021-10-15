@@ -21,11 +21,13 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         lifecycleScope.launch {
-            viewModel.getUsers()
-
-            viewModel.stateFlow.collect {  uiState ->
-                Log.e("uiState", uiState.toString())
+            viewModel.getUsers().collect {
+                Log.e("uiState", it.toString())
             }
+
+            /*viewModel.stateFlow.collect {  uiState ->
+                Log.e("uiState", uiState.toString())
+            }*/
         }
     }
 }
