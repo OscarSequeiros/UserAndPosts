@@ -16,7 +16,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.empty_view)
+        setContentView(R.layout.activity_main)
         viewModel.getUsers()
 
         lifecycleScope.launch {
