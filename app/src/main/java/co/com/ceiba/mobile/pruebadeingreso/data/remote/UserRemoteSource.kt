@@ -1,7 +1,7 @@
 package co.com.ceiba.mobile.pruebadeingreso.data.remote
 
 import co.com.ceiba.mobile.pruebadeingreso.data.remote.model.RemoteUser
-import co.com.ceiba.mobile.pruebadeingreso.domain.Post
+import co.com.ceiba.mobile.pruebadeingreso.domain.model.Post
 import io.ktor.client.*
 import io.ktor.client.engine.android.*
 import io.ktor.client.features.*

@@ -2,7 +2,7 @@ package co.com.ceiba.mobile.pruebadeingreso.data.mapper
 
 import co.com.ceiba.mobile.pruebadeingreso.data.local.model.RoomUser
 import co.com.ceiba.mobile.pruebadeingreso.data.remote.model.RemoteUser
-import co.com.ceiba.mobile.pruebadeingreso.domain.User
+import co.com.ceiba.mobile.pruebadeingreso.domain.model.User
 
 class UserDataMapper {
 

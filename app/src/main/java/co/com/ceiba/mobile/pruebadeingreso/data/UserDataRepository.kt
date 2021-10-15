@@ -3,8 +3,8 @@ package co.com.ceiba.mobile.pruebadeingreso.data
 import co.com.ceiba.mobile.pruebadeingreso.data.local.UserDao
 import co.com.ceiba.mobile.pruebadeingreso.data.mapper.UserDataMapper
 import co.com.ceiba.mobile.pruebadeingreso.data.remote.UserRemoteSource
-import co.com.ceiba.mobile.pruebadeingreso.domain.User
-import co.com.ceiba.mobile.pruebadeingreso.domain.UserWithPosts
+import co.com.ceiba.mobile.pruebadeingreso.domain.model.User
+import co.com.ceiba.mobile.pruebadeingreso.domain.model.UserWithPosts
 import co.com.ceiba.mobile.pruebadeingreso.domain.repository.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

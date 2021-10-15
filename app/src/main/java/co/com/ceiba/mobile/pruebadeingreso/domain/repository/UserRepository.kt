@@ -1,7 +1,7 @@
 package co.com.ceiba.mobile.pruebadeingreso.domain.repository
 
-import co.com.ceiba.mobile.pruebadeingreso.domain.User
-import co.com.ceiba.mobile.pruebadeingreso.domain.UserWithPosts
+import co.com.ceiba.mobile.pruebadeingreso.domain.model.User
+import co.com.ceiba.mobile.pruebadeingreso.domain.model.UserWithPosts
 import kotlinx.coroutines.flow.Flow
 
 interface UserRepository {

@@ -12,7 +12,7 @@ import co.com.ceiba.mobile.pruebadeingreso.data.local.model.RoomUser
         version = 1,
         exportSchema = false
 )
-abstract class DataBase : RoomDatabase() {
+abstract class AppDataBase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
 }

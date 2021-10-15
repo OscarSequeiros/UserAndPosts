@@ -1,4 +1,4 @@
-package co.com.ceiba.mobile.pruebadeingreso.domain
+package co.com.ceiba.mobile.pruebadeingreso.domain.model
 
 data class UserWithPosts(
         val user: User,
