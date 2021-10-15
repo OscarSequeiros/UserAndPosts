@@ -8,8 +8,9 @@ import co.com.ceiba.mobile.pruebadeingreso.domain.model.UserWithPosts
 import co.com.ceiba.mobile.pruebadeingreso.domain.repository.UserRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class UserDataRepository(
+class UserDataRepository @Inject constructor(
         private val localSource: UserDao,
         private val remoteSource: UserRemoteSource,
         private val mapper: UserDataMapper,

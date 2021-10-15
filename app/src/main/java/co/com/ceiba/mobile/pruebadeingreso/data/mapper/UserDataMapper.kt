@@ -3,8 +3,9 @@ package co.com.ceiba.mobile.pruebadeingreso.data.mapper
 import co.com.ceiba.mobile.pruebadeingreso.data.local.model.RoomUser
 import co.com.ceiba.mobile.pruebadeingreso.data.remote.model.RemoteUser
 import co.com.ceiba.mobile.pruebadeingreso.domain.model.User
+import javax.inject.Inject
 
-class UserDataMapper {
+class UserDataMapper @Inject constructor() {
 
     fun toRoom(users: List<RemoteUser>): List<RoomUser> {
         return users.map { user -> user.toRoom() }

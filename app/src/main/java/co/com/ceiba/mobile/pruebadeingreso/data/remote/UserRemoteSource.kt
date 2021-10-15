@@ -9,8 +9,9 @@ import io.ktor.client.features.json.*
 import io.ktor.client.features.logging.*
 import io.ktor.client.request.*
 import io.ktor.http.*
+import javax.inject.Inject
 
-class UserRemoteSource {
+class UserRemoteSource @Inject constructor() {
 
     private val client = HttpClient(Android) {
         defaultRequest {
