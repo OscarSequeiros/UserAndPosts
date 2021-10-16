@@ -48,8 +48,4 @@ class UserDataRepository @Inject constructor(
             emit(userWithPosts)
         }
     }
-
-    override fun getUsersByName(name: String): Flow<List<User>> {
-        TODO("Not yet implemented")
-    }
 }

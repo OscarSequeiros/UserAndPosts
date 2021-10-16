@@ -9,6 +9,4 @@ interface UserRepository {
     fun getAllUsers(): Flow<List<User>>
 
     fun getUserWithPosts(userId: Long): Flow<UserWithPosts>
-
-    fun getUsersByName(name: String): Flow<List<User>>
 }
