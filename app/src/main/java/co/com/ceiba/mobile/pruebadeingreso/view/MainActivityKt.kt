@@ -12,6 +12,7 @@ import co.com.ceiba.mobile.pruebadeingreso.databinding.ActivityMainBinding
 import co.com.ceiba.mobile.pruebadeingreso.domain.model.User
 import co.com.ceiba.mobile.pruebadeingreso.presentation.UsersViewModel
 import co.com.ceiba.mobile.pruebadeingreso.presentation.state.UsersUiState
+import co.com.ceiba.mobile.pruebadeingreso.util.showToast
 import co.com.ceiba.mobile.pruebadeingreso.view.adapter.UsersAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -30,7 +31,6 @@ class MainActivityKt : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupRecycler()
@@ -41,7 +41,6 @@ class MainActivityKt : AppCompatActivity() {
         val mLayoutManager = LinearLayoutManager(this)
         binding.recyclerViewSearchResults.layoutManager = mLayoutManager
         binding.recyclerViewSearchResults.adapter = adapter
-
     }
 
     private fun observeUiState() {
@@ -69,7 +68,8 @@ class MainActivityKt : AppCompatActivity() {
     }
 
     private fun navigateToDetails(userId: Long) {
-
+        val intent = PostActivityKt.buildIntent(this, userId)
+        startActivity(intent)
     }
 
     private fun showError(error: Throwable) {
@@ -87,9 +87,5 @@ class MainActivityKt : AppCompatActivity() {
 
     private fun hideLoading() {
         binding.progressLoading.visibility = View.GONE
-    }
-
-    private fun showToast(message: String, duration: Int) {
-        Toast.makeText(this, message, duration).show()
     }
 }

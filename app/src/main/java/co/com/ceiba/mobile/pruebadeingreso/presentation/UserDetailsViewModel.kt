@@ -1,5 +1,6 @@
 package co.com.ceiba.mobile.pruebadeingreso.presentation
 
+import androidx.lifecycle.ViewModel
 import co.com.ceiba.mobile.pruebadeingreso.domain.GetUserWithPostsUseCase
 import co.com.ceiba.mobile.pruebadeingreso.presentation.state.UserDetailsUiState
 import co.com.ceiba.mobile.pruebadeingreso.presentation.state.UserDetailsUiState.*
@@ -11,7 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 class UserDetailsViewModel @Inject constructor(
         private val getUserWithPostsUseCase: GetUserWithPostsUseCase
-) {
+) : ViewModel() {
 
     fun getDetails(userId: Long): Flow<UserDetailsUiState> {
         return getUserWithPostsUseCase(userId)

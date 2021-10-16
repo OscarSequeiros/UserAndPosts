@@ -5,10 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import co.com.ceiba.mobile.pruebadeingreso.databinding.UserListItemBinding
 import co.com.ceiba.mobile.pruebadeingreso.domain.model.User
-import javax.inject.Inject
 import kotlin.properties.Delegates
 
-class UsersAdapter @Inject constructor(
+class UsersAdapter(
         private val onClick: (Long) -> Unit
 ) : RecyclerView.Adapter<UserViewHolder>() {
 
