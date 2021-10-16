@@ -6,21 +6,22 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import co.com.ceiba.mobile.pruebadeingreso.data.database.AppDataBase
+import co.com.ceiba.mobile.pruebadeingreso.factory.generateFakePosts
 import co.com.ceiba.mobile.pruebadeingreso.factory.generateFakeUser
-import co.com.ceiba.mobile.pruebadeingreso.factory.generateFakeUsers
 import kotlinx.coroutines.runBlocking
 import org.junit.*
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 @SmallTest
-class UserDaoTest {
+class PostDaoTest {
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private lateinit var database: AppDataBase
-    private lateinit var dao: UserDao
+    private lateinit var postDao: PostDao
+    private lateinit var userDao: UserDao
 
     @Before
     fun setup() {
@@ -29,7 +30,8 @@ class UserDaoTest {
                 AppDataBase::class.java
         ).allowMainThreadQueries().build()
 
-        dao = database.userDao()
+        postDao = database.postDao()
+        userDao = database.userDao()
     }
 
     @After
@@ -38,27 +40,19 @@ class UserDaoTest {
     }
 
     @Test
-    fun givenUsers_whenInsertAndGetThem_thenGetTheSameSize() = runBlocking {
-        val fakeUsers = generateFakeUsers()
+    fun givenPosts_whenInsertAndGetThem_thenGetTheSame() = runBlocking {
+        val userId = 42L
+        // We need to insert a user before inserting post because of foreign key
+        val fakeUser = generateFakeUser().copy(id = userId)
+        userDao.insert(listOf(fakeUser))
 
-        dao.insert(fakeUsers)
-        val users = dao.getAll()
+        val fakePosts = generateFakePosts(userId = userId)
 
-        Assert.assertEquals(fakeUsers.size, users.size)
-        users.forEach { user ->
-            assert(fakeUsers.contains(user))
+        postDao.insert(fakePosts)
+        val posts = postDao.getByUserId(userId)
+
+        posts.forEach { post ->
+            assert(fakePosts.contains(post))
         }
-    }
-
-    @Test
-    fun givenUserWithSpecificId_whenInsertAndGetById_thenGetTheSameUser() = runBlocking {
-        val id = 42L
-        val fakeUser = generateFakeUser().copy(id = id)
-        val fakeUsers = listOf(fakeUser)
-
-        dao.insert(fakeUsers)
-        val user = dao.getById(id)
-
-        Assert.assertEquals(fakeUser, user)
     }
 }
