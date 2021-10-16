@@ -1,8 +1,8 @@
 package co.com.ceiba.mobile.pruebadeingreso.presentation
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import co.com.ceiba.mobile.pruebadeingreso.domain.GetAllUsersUseCase
+import co.com.ceiba.mobile.pruebadeingreso.domain.GetUsersByNameUseCase
 import co.com.ceiba.mobile.pruebadeingreso.presentation.state.UsersUiState
 import co.com.ceiba.mobile.pruebadeingreso.presentation.state.UsersUiState.*
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -12,11 +12,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UsersViewModel @Inject constructor(
-        private val getUsersUseCase: GetAllUsersUseCase
+        private val getUsersByNameUseCase: GetUsersByNameUseCase,
 ) : ViewModel() {
 
-    fun getUsers(): Flow<UsersUiState> {
-        return getUsersUseCase()
+    fun getUsers(name: String): Flow<UsersUiState> {
+        return getUsersByNameUseCase(name)
                 .map { users -> SuccessState(users) as UsersUiState }
                 .onStart { emit(LoadingState) }
                 .catch { error -> emit(ErrorState(error)) }

@@ -1,6 +1,8 @@
 package co.com.ceiba.mobile.pruebadeingreso.view
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -34,7 +36,8 @@ class MainActivityKt : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupRecycler()
-        observeUiState()
+        getAllUsers()
+        observeEditText()
     }
 
     private fun setupRecycler() {
@@ -43,9 +46,28 @@ class MainActivityKt : AppCompatActivity() {
         binding.recyclerViewSearchResults.adapter = adapter
     }
 
-    private fun observeUiState() {
+    private fun getAllUsers() {
+        getUsersByName()
+    }
+
+    private fun observeEditText() {
+        binding.editTextSearch.addTextChangedListener(
+                object : TextWatcher {
+                    override fun afterTextChanged(s: Editable) {
+                        val value = s.toString()
+                        getUsersByName(value)
+                    }
+
+                    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+                    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                }
+        )
+    }
+
+    private fun getUsersByName(name: String = "") {
         lifecycleScope.launch {
-            viewModel.getUsers().collect { uiState -> render(uiState) }
+            viewModel.getUsers(name).collect { uiState -> render(uiState) }
         }
     }
 
