@@ -17,7 +17,13 @@ class UsersViewModel @Inject constructor(
 
     fun getUsers(name: String): Flow<UsersUiState> {
         return getUsersByNameUseCase(name)
-                .map { users -> SuccessState(users) as UsersUiState }
+                .map { users ->
+                    if (users.isEmpty()) {
+                        EmptyState
+                    } else {
+                        SuccessState(users)
+                    }
+                }
                 .onStart { emit(LoadingState) }
                 .catch { error -> emit(ErrorState(error)) }
                 .flowOn(Dispatchers.IO)

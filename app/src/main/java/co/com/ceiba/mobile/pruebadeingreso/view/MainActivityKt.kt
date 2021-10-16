@@ -86,6 +86,7 @@ class MainActivityKt : AppCompatActivity() {
 
     private fun showElements(users: List<User>) {
         hideLoading()
+        binding.textEmpty.visibility = View.GONE
         adapter.users = users
     }
 
@@ -104,7 +105,8 @@ class MainActivityKt : AppCompatActivity() {
 
     private fun showEmpty() {
         hideLoading()
-        showToast(getString(R.string.list_is_empty), Toast.LENGTH_LONG)
+        adapter.users = emptyList()
+        binding.textEmpty.visibility = View.VISIBLE
     }
 
     private fun hideLoading() {

@@ -9,8 +9,8 @@
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         tools:ignore="UselessParent">
@@ -25,16 +25,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/edit_text_search"
-                android:inputType="textPersonName"/>
+                android:inputType="textPersonName" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewSearchResults"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/textInputLayoutSearch"/>
+            android:layout_below="@id/textInputLayoutSearch"
+            android:layout_marginTop="@dimen/activity_vertical_margin" />
 
         <ProgressBar
             android:id="@+id/progress_loading"
@@ -44,6 +44,14 @@
             android:layout_centerVertical="true"
             android:visibility="gone"
             tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/text_empty"
+            android:text="@string/list_is_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
 
     </RelativeLayout>
 
