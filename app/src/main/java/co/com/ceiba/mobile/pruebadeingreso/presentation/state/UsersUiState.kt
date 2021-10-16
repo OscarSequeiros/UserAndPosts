@@ -4,8 +4,6 @@ import co.com.ceiba.mobile.pruebadeingreso.domain.model.User
 
 sealed class UsersUiState {
 
-    object IdleState : UsersUiState()
-
     object LoadingState : UsersUiState()
 
     data class SuccessState(val users: List<User>) : UsersUiState()

@@ -1,6 +1,7 @@
 package co.com.ceiba.mobile.pruebadeingreso.presentation
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import co.com.ceiba.mobile.pruebadeingreso.domain.GetAllUsersUseCase
 import co.com.ceiba.mobile.pruebadeingreso.presentation.state.UsersUiState
 import co.com.ceiba.mobile.pruebadeingreso.presentation.state.UsersUiState.*
