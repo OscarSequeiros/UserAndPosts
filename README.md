@@ -1,5 +1,5 @@
 # User and Posts
-Small application for showing users and their posts
+Small application for showing users and their posts.
 
 ## Building the app
 The app is using [Gradle](https://gradle.org). An executable wrapper for Gradle is provided within the codebase (gradlew and gradlew.bat), so you don't need to install Gradle locally to build the app.
@@ -18,7 +18,6 @@ Currently, we have only one module:
 | [Android KTX](https://developer.android.com/kotlin/ktx) | 1.6.0 | Kotlin extensions that are included with Android Jetpack |
 | [Android AppCompat](https://developer.android.com/jetpack/androidx/releases/appcompat) | 1.3.1 | Allows access to new APIs an older API version of the platform |
 | [Android Material](https://material.io/develop/android/docs/getting-started) | 1.4.0 | Google Design system
-| [Android ViewModel KTX](https://developer.android.com/kotlin/ktx?gclid=Cj0KCQjwwLKFBhDPARIsAPzPi-IXxYMh9GtbWVjXAhX9BcM1a3TBZ9O7ltNgX79E-sZjq_J6_piybMwaAssyEALw_wcB&gclsrc=aw.ds#viewmodel) | 2.3.1 | Provides a `viewModelScope()` that makes it easier to lunch coroutines |
 | [Android Fragment KTX](https://developer.android.com/kotlin/ktx?gclid=Cj0KCQjwwLKFBhDPARIsAPzPi-IXxYMh9GtbWVjXAhX9BcM1a3TBZ9O7ltNgX79E-sZjq_J6_piybMwaAssyEALw_wcB&gclsrc=aw.ds#fragment) | 1.3.6 | Provides a number of extensions to simplify the fragment API |
 | [Kotlin](https://developer.android.com/kotlin) | 1.5.30 | Primary development language |
 | [Kotlin Coroutines Core](https://kotlinlang.org/docs/coroutines-overview.html) | 1.5.2 | Asynchronous or non-blocking programming |
