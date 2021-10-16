@@ -5,10 +5,10 @@ import co.com.ceiba.mobile.pruebadeingreso.domain.repository.UserRepository
 import co.com.ceiba.mobile.pruebadeingreso.factory.makeFakeUsers
 import io.mockk.coEvery
 import io.mockk.mockk
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class GetAllUsersUseCaseTest {
