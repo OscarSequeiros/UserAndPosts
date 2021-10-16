@@ -3,6 +3,7 @@ package co.com.ceiba.mobile.pruebadeingreso.data.database.di
 import android.content.Context
 import androidx.room.Room
 import co.com.ceiba.mobile.pruebadeingreso.data.database.AppDataBase
+import co.com.ceiba.mobile.pruebadeingreso.data.local.PostDao
 import co.com.ceiba.mobile.pruebadeingreso.data.local.UserDao
 import dagger.Module
 import dagger.Provides
@@ -18,6 +19,11 @@ class DatabaseModule {
     @Provides
     fun provideUserDao(appDatabase: AppDataBase): UserDao {
         return appDatabase.userDao()
+    }
+
+    @Provides
+    fun providePostDao(appDatabase: AppDataBase): PostDao {
+        return appDatabase.postDao()
     }
 
     @Provides
