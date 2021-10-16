@@ -15,4 +15,7 @@ interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(users: List<RoomUser>)
+
+    @Query("SELECT * FROM RoomUser WHERE id = :userId")
+    suspend fun getById(userId: Long): RoomUser
 }

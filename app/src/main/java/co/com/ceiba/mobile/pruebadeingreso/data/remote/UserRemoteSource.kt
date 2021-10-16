@@ -1,5 +1,6 @@
 package co.com.ceiba.mobile.pruebadeingreso.data.remote
 
+import co.com.ceiba.mobile.pruebadeingreso.data.remote.model.RemotePost
 import co.com.ceiba.mobile.pruebadeingreso.data.remote.model.RemoteUser
 import co.com.ceiba.mobile.pruebadeingreso.domain.model.Post
 import io.ktor.client.*
@@ -38,8 +39,8 @@ class UserRemoteSource @Inject constructor() {
         return client.get("users")
     }
 
-    suspend fun getPosts(): List<Post> {
-        return client.get("posts?")
+    suspend fun getPost(userId: Long): List<RemotePost> {
+        return client.get("posts?userId=$userId")
     }
 
     companion object {

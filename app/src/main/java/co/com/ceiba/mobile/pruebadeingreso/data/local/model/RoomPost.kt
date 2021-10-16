@@ -15,7 +15,7 @@ import androidx.room.PrimaryKey
 )
 data class RoomPost(
         @PrimaryKey val id: Long,
-        @ColumnInfo(name = "user_id", index = true) val userId: String,
+        @ColumnInfo(name = "user_id", index = true) val userId: Long,
         @ColumnInfo(name = "title") val title: String,
         @ColumnInfo(name = "body") val body: String,
 )

@@ -10,8 +10,8 @@ import co.com.ceiba.mobile.pruebadeingreso.data.local.model.RoomPost
 interface PostDao {
 
     @Query("SELECT * FROM RoomPost WHERE user_id = :userId")
-    suspend fun getByUserId(userId: Long): RoomPost?
+    suspend fun getByUserId(userId: Long): List<RoomPost>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(post: RoomPost)
+    suspend fun insert(posts: List<RoomPost>)
 }
