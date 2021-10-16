@@ -5,6 +5,17 @@ import co.com.ceiba.mobile.pruebadeingreso.domain.model.User
 import co.com.ceiba.mobile.pruebadeingreso.domain.model.UserWithPosts
 import kotlin.random.Random
 
+fun makeFakeUsersWithName(total: Int, withThisName: Int, name: String): List<User> {
+    return makeFakeUsers(total)
+            .mapIndexed { index, user ->
+                if (index < withThisName) {
+                    user.copy(name = name)
+                } else {
+                    user
+                }
+            }
+}
+
 fun makeFakeUsers(size: Int = 4): List<User> {
     return (1..size).map { makeFakeUser() }
 }
