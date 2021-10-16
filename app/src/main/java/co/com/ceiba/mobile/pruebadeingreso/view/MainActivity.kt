@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MainActivityKt : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private val viewModel: UsersViewModel by viewModels()
 
@@ -91,7 +91,7 @@ class MainActivityKt : AppCompatActivity() {
     }
 
     private fun navigateToDetails(userId: Long) {
-        val intent = PostActivityKt.buildIntent(this, userId)
+        val intent = PostActivity.buildIntent(this, userId)
         startActivity(intent)
     }
 

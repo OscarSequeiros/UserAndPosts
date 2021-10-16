@@ -24,7 +24,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class PostActivityKt : AppCompatActivity() {
+class PostActivity : AppCompatActivity() {
 
     private val viewModel: UserDetailsViewModel by viewModels()
 
@@ -105,7 +105,7 @@ class PostActivityKt : AppCompatActivity() {
         private const val USER_ID_PARAM = "user_id_param"
 
         fun buildIntent(context: Context, userId: Long): Intent {
-            return Intent(context, PostActivityKt::class.java).also { intent ->
+            return Intent(context, PostActivity::class.java).also { intent ->
                 intent.putExtra(USER_ID_PARAM, userId)
             }
         }
